@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sassyhtml</title>
+    <description>A guide for html, css, js, other languages, and their frameworks</description>
+    <link>http://www.sassyhtml</link>
+    <atom:link href="http://www.sassyhtml/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Superscript Tag &amp;lt;sup&amp;gt; and Line Height</title>
+        <description>&lt;p&gt;Using &amp;lt;sup&amp;gt; is really useful when you’re dealing with trademarks. Most of the time, you probably won’t run into any issues, and the default styles will work perfectly for you. Unless you are using the superscript tag in a title that you’d like aligned with another title tag. For example, maybe you have two columns:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2014/10/sup_nope.jpg&quot; alt=&quot;Wrong way to use the sup tag&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welp, that just doesn’t work. Now the spacing is all screwy. Not to worry; three lines of CSS will fix that for you:&lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+sup {
+  vertical-align: top;
+  position: relative;
+  top: -0.3em;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;…which results in:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2014/10/sup_yup.jpg&quot; alt=&quot;Wrong way to use the sup tag&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;line-height: perfect;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Oct 2014 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml/snippets/css/superscript-tag-sup-line-height/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/css/superscript-tag-sup-line-height/</guid>
+      </item>
+    
+      <item>
+        <title>Responsive Image Cropping with CSS</title>
+        <description>&lt;p&gt;Create a responsive promo banner with a fixed height. Image needs to horizontally crop as the browser width changes.&lt;/p&gt;
+
+&lt;h3 id=&quot;requirements&quot;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Promo banner should stretch the width of the browser (to the max-width of the website)&lt;/li&gt;
+  &lt;li&gt;Left div should have a vertically aligned block of text&lt;/li&gt;
+  &lt;li&gt;Right div should have a horizontally aligned image that fills the space&lt;/li&gt;
+  &lt;li&gt;Promo banner should have a fixed height&lt;/li&gt;
+  &lt;li&gt;Use current grid system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;final-product&quot;&gt;Final Product&lt;/h3&gt;
+
+&lt;p data-height=&quot;500&quot; data-theme-id=&quot;7680&quot; data-slug-hash=&quot;Lmdpz&quot; data-default-tab=&quot;result&quot; data-user=&quot;kaela&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/kaela/pen/Lmdpz/&quot;&gt;Responsive, Croppable Images&lt;/a&gt; by Kaela (&lt;a href=&quot;http://codepen.io/kaela&quot;&gt;@kaela&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;There are four main components in this tutorial: &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Absolute/Relative positioning of elements&lt;/li&gt;
+  &lt;li&gt;Hiding the image’s overflow&lt;/li&gt;
+  &lt;li&gt;Left: 50%;&lt;/li&gt;
+  &lt;li&gt;A negative left margin on the image&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;the-image&quot;&gt;The image&lt;/h3&gt;
+
+&lt;p&gt;For this tutorial to work, we need a very (vertically) long image with a (fairly) short height. Mine is 1215 x 407px. The focal point is centered in the middle of this image, with a size of about 440 x 407px. If you are having a hard time visualizing a realistic use case, imagine two individuals modeling the latest-and-greatest spring clothing line, sitting on a beach. The models are in the center of the image (at 440 x 407px), while the beach spans the entire width (1215 x 407px) behind them. &lt;/p&gt;
+
+&lt;h3 id=&quot;the-wrapper-divs&quot;&gt;The wrapper divs&lt;/h3&gt;
+
+&lt;p&gt;.promo sets the height. You’ll want this to match the height of your image. Mine is 407px. So, height: 407px.&lt;/p&gt;
+
+&lt;p&gt;Next, set up two empty divs: .promo-imgWrapper and .promo-textWrapper. Give the image wrapper a width of, say, 33.333% and float it left, and the text wrapper a width of 66.666% and float it right. I am using the framework I built at work, hence the classes “_4x12” and “_8x12”. When the browser hits a smaller breakpoint, we’ll have the divs stack on top of one another. Personally, I prefer the image to stack on top of the text, so I placed the image wrapper div above the text wrapper div. Stack them however you prefer for that smaller breakpoint. &lt;/p&gt;
+
+&lt;h3 id=&quot;the-image-divs&quot;&gt;The image divs&lt;/h3&gt;
+
+&lt;p&gt;.promo-imgWrapper wraps your image. It needs a height of 100% to fill the space we just set with .promo. Set the overflow to hidden. Right now, that image just keeps-on-a-goin off the right side of the page. Overflow:hidden will chop off the right side of the image. &lt;em&gt;Lookin good, eh?!&lt;/em&gt; Give .promo-imgWrapper a relative position. This sets the div relative to its parent, keeping it on the right side.&lt;/p&gt;
+
+&lt;p&gt;On to .promo-img. This is where stuff gets interesting, so pay attention! I have:&lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+.promo-img {
+  position: absolute; 
+  top: 0; 
+  left: 50%;
+  margin-left: -607px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will always use this setup: &lt;strong&gt;position: absolute; top: 0; left: 50%;&lt;/strong&gt;. However, &lt;strong&gt;margin-left: -607px&lt;/strong&gt; will change based on the width of your original image. To get your super special number, divide your image width in half and pop a negative sign in front of it.&lt;/p&gt;
+
+&lt;p&gt;This works because your image naturally (ha - as if there’s anything &lt;em&gt;natural&lt;/em&gt; about technology) wants to align to the left. We have set the overflow to hidden, but that image is really hanging off a lot to the right. When we set &lt;strong&gt;position: absolute; top: 0; left: 50%&lt;/strong&gt;, the image’s left side aligns itself in the middle (50%) of it’s parent. Okay, so now we have a huge chunk of white space on the left side of our .promo-imgWrapper div, with a tiny piece of our original image on the right side of the div. That’s where our negative-half-size comes into play. By taking half the size of our image, we can slide the image all the way back to where we want with a negative margin. In my case, -607px works splendidly.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-text-divs&quot;&gt;The text divs&lt;/h3&gt;
+
+&lt;p&gt;There are a few ways to get this to work, but I just gave the parent .promo-textWrapper a height of 100% to fill the space, along with a display of table. Yup, I used a table. In the .promo-text div, I set the display to table-cell and vertically aligned it in the middle. 15px padding is pretty good space for the text.&lt;/p&gt;
+
+&lt;h3 id=&quot;wrap-up&quot;&gt;Wrap Up&lt;/h3&gt;
+
+&lt;p&gt;And there you have it! A promo banner that works with our already-in-place grid system. The divs are responsive, and the image centers AND crops itself in our designated image space. If anyone has a different way to accomplish this, let me know!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Aug 2014 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml/snippets/css/responsive-image-cropping-css/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/css/responsive-image-cropping-css/</guid>
+      </item>
+    
+      <item>
+        <title>Landing pages for categories using Archives</title>
+        <description>&lt;p&gt;Here is an option for people who are okay with using “categories” as your filing system. You will &lt;strong&gt;ONLY&lt;/strong&gt; be able to use this option if you use &lt;strong&gt;ONE&lt;/strong&gt; category per post. If you’re cool with that, and using tags to incorporate additional labeling, this may be a good option for you. It really doesn’t get any easier than this.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of a super simple structure for a website:&lt;/p&gt;
+
+&lt;pre class=&quot;language-wp&quot;&gt;&lt;code&gt;
+- home
+-- css
+--- de css posts
+-- scss
+--- de scss posts
+-- html
+--- de html posts
+etc.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Basically, it goes three “pages” deep:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set up your categories by going to admin &amp;gt; Posts &amp;gt; Categories&lt;/li&gt;
+  &lt;li&gt;Next, go to Admin &amp;gt; Settings &amp;gt; Permalinks&lt;/li&gt;
+  &lt;li&gt;Select “Custom Structure” and type, “/%category%/%postname%.”&lt;/li&gt;
+  &lt;li&gt;Assign each of your posts to &lt;strong&gt;ONE&lt;/strong&gt;* category&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;*If you add more than one category to a post, your post will be filed under: yourdomain/uncategorized/post-title &lt;/p&gt;
+
+&lt;p&gt;You’re done! You now set your Archive pages as landing “pages” for each category. To modify those archive pages, edit the archives.php file.&lt;/p&gt;
+
+&lt;p&gt;So that’s it. Pretty simple, eh? Of course, you have to be willing to use only one category per post, but according to this great article on &lt;em&gt;&lt;a href=&quot;https://managewp.com/wordpress-categories-tags-seo&quot; title=&quot;Read The Right Way to Use Categories and Tags in WordPress to Boost SEO&quot;&gt;The Right Way to Use Categories and Tags in WordPress to Boost SEO&lt;/a&gt;&lt;/em&gt; by Tom Ewer, we should be limiting our posts to one or two categories anyway. &lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 18 Mar 2014 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml/snippets/wordpress/landing-pages-categories-using-archives/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/wordpress/landing-pages-categories-using-archives/</guid>
+      </item>
+    
+      <item>
+        <title>Installing WordPress Plugins Locally</title>
+        <description>&lt;p&gt;If you are working on your WordPress locally, before uploading it for the world to see, thank you. If you are new to this, there are a few changes you will need to make in order to get everything working properly.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-plugins-locally&quot;&gt;Installing Plugins Locally&lt;/h3&gt;
+
+&lt;p&gt;If you try to install themes on default, you will get this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2014/03/plugin-failed.png&quot; alt=&quot;Failed plugin download&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks similar to the success message, but if you read through it, you’ll see that it failed.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, it’s a simple fix. In your WordPress directory, set privileges for everyone to “Read &amp;amp; Write” for wp-content/plugins.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2014/03/plugin-success.png&amp;quot;&quot; alt=&quot;Failed plugin download&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-media-locally&quot;&gt;Adding Media Locally&lt;/h3&gt;
+
+&lt;p&gt;Similar to plugins, adding media to your localhost will fail on default. Again, it’s a pretty easy fix. In your WordPress directory, set privileges for everyone to “Read &amp;amp; Write” for wp-content. &lt;/p&gt;
+
+&lt;h3 id=&quot;recap&quot;&gt;Recap&lt;/h3&gt;
+
+&lt;p&gt;To make plugins and media work on your localhost, set the following directories to have “Read &amp;amp; Write” privileges for everyone:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;wp-content/plugins&lt;/li&gt;
+  &lt;li&gt;wp-content&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 18 Mar 2014 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml/snippets/wordpress/installing-wordpress-plugins-locally/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/wordpress/installing-wordpress-plugins-locally/</guid>
+      </item>
+    
+      <item>
+        <title>Adding category classes to body tag</title>
+        <description>&lt;p&gt;Trying to add category classes was a bit tedious. I ran across a few blog posts on how to implement them. Many didn’t work (maybe they were for previous versions of WordPress?), but one did.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-worked&quot;&gt;What worked&lt;/h3&gt;
+
+&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;
+add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
+
+function add_category_to_single($classes) {
+  if (is_single() ) {
+    global $post;
+    foreach((get_the_category($post-&amp;gt;ID)) as $category) {
+      echo $category-&amp;gt;cat_name . &#39; &#39;;
+	  
+      // add category slug to the $classes array
+      $classes[] = &#39;category-&#39;.$category-&amp;gt;slug;
+    }
+  }
+  // return the $classes array
+  return $classes;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reference: &lt;a href=&quot;http://wordpress.org/support/topic/php-issue-once-uploaded-to-server#post-1551522&quot;&gt;jackreichert&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-did-not-work&quot;&gt;What did not work&lt;/h3&gt;
+
+&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;
+add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
+function add_category_to_single($classes, $class) {
+  if (is_single() ) {
+    global $post;
+    foreach((get_the_category($post-&amp;gt;ID)) as $category) {
+      echo $category-&amp;gt;cat_name . &#39; &#39;;
+      
+      // add category slug to the $classes array
+      $classes[] = &#39;category-&#39;.$category-&amp;gt;slug;
+    }
+  }
+  // return the $classes array
+  return $classes;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This looks REALLY close to the working code, but the function properties includes a second function value, “$class”, which outputs the following error:&lt;/p&gt;
+
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
+Warning: Missing argument 2 for add_category_to_single() in /home/tonguet1/public_html/wp-content/themes/TTM/functions.php on line 6
+News class=&quot;single postid-493 logged-in category category-news&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not sure what’s happening there, but just remove that second value.&lt;/p&gt;
+
+&lt;h3 id=&quot;this-also-didnt-work&quot;&gt;This also didn’t work&lt;/h3&gt;
+
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
+&amp;lt;body id=&quot;top&quot; &amp;lt;?php if (function_exists(&#39;body_class&#39;)) body_class(&#39;category-&#39;.$class ); ?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Instead of adding the category class, it just adds “category-“ so it isn’t really helpful. If you use this along with the snippet posted above, it will add an additional class of “category” which again, isn’t helpful.&lt;/p&gt;
+
+&lt;p&gt;Hope this helps everyone else from spending 15min searching for the right code.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 18 Mar 2014 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml/snippets/wordpress/adding-category-classes-body-tag/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/wordpress/adding-category-classes-body-tag/</guid>
+      </item>
+    
+      <item>
+        <title>REM units are not applied correctly to body tag in Chrome</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://code.google.com/p/chromium/issues/detail?id=319623&quot;&gt;Track this issue&lt;/a&gt; on chromium. It was closed back in January, but it still occasionally happens for me.&lt;/p&gt;
+
+&lt;h3 id=&quot;rem-fans-like-to-use-this-but-chrome-doesn8217t-like-it&quot;&gt;rem fans like to use this*, but Chrome doesn’t like it:&lt;/h3&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+html { font-size: 62.5%; } 
+body { font-size: 1.4rem; } 
+h1   { font-size: 2.4rem; } 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*a magical snippet from &lt;a href=&quot;http://snook.ca/archives/html_and_css/font-size-with-rem&quot;&gt;Jonathan Snook&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;We use 62.5% on the html to bring the base font down to 10px, for easy multiplication. Then, the rest is SUPPOSED to be easy. That body font-size should 1.4rem * 10px = 14px. The h1 should have a font-size of 24px.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-actually-happens-in-chrome-about-50-of-the-time&quot;&gt;What actually happens in Chrome (about 50% of the time):&lt;/h3&gt;
+
+&lt;p&gt;Chrome will not let you set that base font below 100% (16px). Well, sometimes it does. But sometimes it doesn’t. Check out what happens to the body and h1 font sizes. &lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+html { font-size: 62.5%; }
+body { font-size: 1.4rem; } /* 1.4 * 16 = 22.4px */
+h1   { font-size: 2.4rem; } /* 2.4 * 16 = 38.4px */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since we tried setting that root font-size below 100%, or 16px, Chrome reverted back to using 16px as the root font size.&lt;/p&gt;
+
+&lt;h3 id=&quot;fix-it-like-this&quot;&gt;Fix it like this:&lt;/h3&gt;
+
+&lt;p&gt;Fortunately, the workaround is pretty simple. The actual issue here is the rem. So, set the body font size with em. Since the body tag is generally dependent on the root/html, there should be no cascading issues. &lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+body {font-size: 1.4em;} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or this&lt;/p&gt;
+
+&lt;p&gt;I’m not a huge fan of these next two options. They do work, but they seem messy, especially the last one. I really don’t like applying styling to * (aside from the limited amount I use for reset).&lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+* {font-size: 1.4rem;} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or this&lt;/p&gt;
+
+&lt;p&gt;You could replace &amp;lt;div&amp;gt; with whatever you use for your wrapper&lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+body &amp;gt; div {font-size: 1.4rem;} 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 07 Mar 2014 00:00:00 -0800</pubDate>
+        <link>http://www.sassyhtml/snippets/css/rem-units-are-not-applied-correctly-to-body-tag-in-chrome/</link>
+        <guid isPermaLink="true">http://www.sassyhtml/snippets/css/rem-units-are-not-applied-correctly-to-body-tag-in-chrome/</guid>
+      </item>
+    
+  </channel>
+</rss>
