@@ -8,6 +8,7 @@ categories:
 ---
 Create pure css checkboxes that are also accessibile with tabindex.
 
+
 ### Overview
 
 There are a lot of awesome tutorials that show us how to style inputs. Unfortunatley, many of those tutorials prevent users from tabbing to those new styled inputs, which is a big no-no for accessibility.
@@ -52,10 +53,12 @@ Typically, it might go something like this:
 }
 ~~~
 
+
 ### The Problem
 Tabindex skips right over that hidden input. That's horrible for accessibility. For example, how would a person with poor or zero vision even know that input exists?
 
 Fortunately, it's a pretty easy fix
+
 
 ### The Fix
 Change 
