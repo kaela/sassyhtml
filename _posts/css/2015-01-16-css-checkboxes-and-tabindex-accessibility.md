@@ -14,12 +14,12 @@ There are a lot of awesome tutorials that show us how to style inputs. Unfortuna
 
 Typically, it might go something like this:
 
-~~~~html
+<pre class="language-html"><code>
 <input type="checkbox" id="age" class="toggleInput">
 <label for="age" class="checkbox-styled">I am over 18 years of age</label>
-~~~~
+</code></pre>
 
-~~~~css
+~~~~ css
 .toggleInput { display: none; }
 .checkbox-styled {
     .checkbox-slide:before {
@@ -58,6 +58,9 @@ Tabindex skips right over that hidden input. That's horrible for accessibility. 
 Fortunately, it's a pretty easy fix
 
 ### The Fix
-Change `.toggleInput { display: none; }` to `.toggleInput { position: absolute; opacity: 0; }`
+Change 
+`.toggleInput { display: none; }` 
+to 
+`.toggleInput { position: absolute; opacity: 0; }`
 
 Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don't want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there's an easy way to adjust this in our case.
