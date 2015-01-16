@@ -14,10 +14,10 @@ There are a lot of awesome tutorials that show us how to style inputs. Unfortuna
 
 Typically, it might go something like this:
 
-<pre class="language-html"><code>
+~~~ html
 <input type="checkbox" id="age" class="toggleInput">
 <label for="age" class="checkbox-styled">I am over 18 years of age</label>
-</code></pre>
+~~~
 
 ~~~~ css
 .toggleInput { display: none; }
