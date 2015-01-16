@@ -19,7 +19,7 @@ Typically, it might go something like this:
 <label for="age" class="checkbox-styled">I am over 18 years of age</label>
 ~~~
 
-~~~~ css
+~~~ css
 .toggleInput { display: none; }
 .checkbox-styled {
     .checkbox-slide:before {
@@ -50,7 +50,7 @@ Typically, it might go something like this:
 .toggleInput:checked + .checkbox-styled:after {
     top: 0;
 }
-~~~~
+~~~
 
 ### The Problem
 Tabindex skips right over that hidden input. That's horrible for accessibility. For example, how would a person with poor or zero vision even know that input exists?
