@@ -30,14 +30,14 @@ line-height: perfect;
 If you like to keep this kind of stuff controlled by css, use this:
 
 <pre class="language-html"><code>
-<h2  class="trademark">Join SKECHERS Elite</h2>
+&lt;h2  class="trademark">Join SKECHERS Elite&lt;/h2>
 </code></pre>
 
 <pre class="language-css"><code>
 .trademark:after {
   content: "\2122";
   display: inline-block;
-  margin-right: -1px; margin-left: 1px; //adds spacing for TM, while keeping original padding/margin of parent element
+  margin-right: -1px; margin-left: 1px;
   position: relative; top: -0.1em;
 }
 </code></pre>
