@@ -31,6 +31,11 @@
         <title>CSS Checkboxes and Tabindex Accessibility</title>
         <description>&lt;p&gt;Create pure css checkboxes that are also accessibile with tabindex.&lt;/p&gt;
 
+&lt;section class=&quot;embeddedCode&quot;&gt;
+    &lt;p data-height=&quot;100&quot; data-theme-id=&quot;7680&quot; data-slug-hash=&quot;XJMwyo&quot; data-default-tab=&quot;result&quot; data-user=&quot;kaela&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/kaela/pen/XJMwyo/&quot;&gt;XJMwyo&lt;/a&gt; by Kaela (&lt;a href=&quot;http://codepen.io/kaela&quot;&gt;@kaela&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+    &lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+&lt;/section&gt;
+
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 
 &lt;p&gt;There are a lot of awesome tutorials that show us how to style inputs. Unfortunatley, many of those tutorials prevent users from tabbing to those new styled inputs, which is a big no-no for accessibility.&lt;/p&gt;

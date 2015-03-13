@@ -8,6 +8,10 @@ categories:
 ---
 Create pure css checkboxes that are also accessibile with tabindex.
 
+<section class="embeddedCode">
+    <p data-height="100" data-theme-id="7680" data-slug-hash="XJMwyo" data-default-tab="result" data-user="kaela" class='codepen'>See the Pen <a href='http://codepen.io/kaela/pen/XJMwyo/'>XJMwyo</a> by Kaela (<a href='http://codepen.io/kaela'>@kaela</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+    <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+</section>
 
 ### Overview
 

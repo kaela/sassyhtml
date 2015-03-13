@@ -522,6 +522,12 @@ article {
   padding: 15px;
 }
 
+.embeddedCode {
+  border: #cccccc 1px dashed;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
 .masthead {
   margin-bottom: 30px;
 }
