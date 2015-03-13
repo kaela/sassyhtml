@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.sassyhtml/snippets/css/superscript-tag-sup-line-height/</loc>
+    <loc>http://www.sassyhtml.com/snippets/css/css-checkboxes-and-tabindex-accessibility/</loc>
+    <lastmod>2015-01-16T00:00:00-08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.sassyhtml.com/snippets/css/superscript-tag-sup-line-height/</loc>
     <lastmod>2014-10-13T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/css/responsive-image-cropping-css/</loc>
+    <loc>http://www.sassyhtml.com/snippets/css/responsive-image-cropping-css/</loc>
     <lastmod>2014-08-05T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/wordpress/landing-pages-categories-using-archives/</loc>
+    <loc>http://www.sassyhtml.com/snippets/wordpress/landing-pages-categories-using-archives/</loc>
     <lastmod>2014-03-18T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/wordpress/installing-wordpress-plugins-locally/</loc>
+    <loc>http://www.sassyhtml.com/snippets/wordpress/installing-wordpress-plugins-locally/</loc>
     <lastmod>2014-03-18T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/wordpress/adding-category-classes-body-tag/</loc>
+    <loc>http://www.sassyhtml.com/snippets/wordpress/adding-category-classes-body-tag/</loc>
     <lastmod>2014-03-18T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/css/rem-units-are-not-applied-correctly-to-body-tag-in-chrome/</loc>
+    <loc>http://www.sassyhtml.com/snippets/css/rem-units-are-not-applied-correctly-to-body-tag-in-chrome/</loc>
     <lastmod>2014-03-07T00:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/404.html</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/404.html</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/about/</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/about/</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/css/</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/snippets/css/</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/snippets/</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://www.sassyhtml/snippets/wordpress/</loc>
-    <lastmod>2014-12-11T19:34:27-08:00</lastmod>
+    <loc>http://www.sassyhtml.com/snippets/wordpress/</loc>
+    <lastmod>2015-03-12T20:03:06-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
