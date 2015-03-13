@@ -7,6 +7,83 @@
     <atom:link href="http://www.sassyhtml.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Creating GitHub Subtasks in Issues</title>
+        <description>&lt;p&gt;I just found my favorite to-do list organization. It’s inside of GitHub issues and can also be used as a subtask. It’s so perfect. So elegant. And so, so simple.&lt;/p&gt;
+
+&lt;h3 id=&quot;heres-what-you-do&quot;&gt;Here’s what you do…&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Open a GitHub issue&lt;/li&gt;
+  &lt;li&gt;In your description, type &lt;code&gt;- [ ]&lt;/code&gt;. In case you didn’t get that, it’s dash-space-bracket-space-bracket.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/githubSubtasks.png&quot; alt=&quot;GitHub Issue with Subtasks&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s it. When you check off a task item, the checkmark (or unselection of a checkmark) persists. GitHub even adds this handy-dandy task completion status on the issue itself:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/githubIssue.png&quot; alt=&quot;GitHub Issue Showing Progress&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 Mar 2015 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml.com/snippets/workflow/creating-github-subtasks-in-issues</link>
+        <guid isPermaLink="true">http://www.sassyhtml.com/snippets/workflow/creating-github-subtasks-in-issues</guid>
+      </item>
+    
+      <item>
+        <title>Selector Specificty with Pseudo-Classes</title>
+        <description>&lt;p&gt;Order of importance:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;h1:not(.className) &lt;/li&gt;
+  &lt;li&gt;.className &lt;/li&gt;
+  &lt;li&gt;h1&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;not-sure-how-i-missed-this&quot;&gt;Not sure how I missed this&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity&quot;&gt;According to Mozilla&lt;/a&gt;, this is the ascending specificity, in order starting at the most specific:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Inline style&lt;/li&gt;
+  &lt;li&gt;ID selectors&lt;/li&gt;
+  &lt;li&gt;Pseudo-classes&lt;/li&gt;
+  &lt;li&gt;Attributes selectors&lt;/li&gt;
+  &lt;li&gt;Class selectors&lt;/li&gt;
+  &lt;li&gt;Type selectors&lt;/li&gt;
+  &lt;li&gt;Universal selectors&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I think most of us have figured this out. I mean, that’s why a lot of us have decided to avoid styling on IDs. Whatever you style on the ID overrides anything you have on the class. It makes specificity a mess. But a lot of us still style a typography.scss file (or something similar). Inside, we style headings and paragraphs, etc. And sometimes you might want to address all section titles &lt;em&gt;except&lt;/em&gt; those on, say, the Thank You page. So you have your html for your thankyou.html as:&lt;/p&gt;
+
+&lt;pre class=&quot;language-html&quot;&gt;
+&lt;code&gt;
+&amp;lt;h2 class=&quot;thankyouTitle&quot;&amp;gt;My Cool Section Title&amp;lt;/h2&amp;gt;
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;and your css is:
+&amp;lt;pre class=&quot;language-css&quot;&amp;gt;&lt;code&gt;
+    h2:not(.thankyouTitle) { font: standardFont; }
+    .thankyouTitle         { font: coolSpecialFont; margin: 0 auto; }
+    h2                     { font-size: 3rem; font-weight: bold; margin: 15px; }
+&lt;/code&gt;&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Great, so everything looks good. You’ve got most h2s using the standard font, which has 15px margins. Your Thank You page h2s will have the new cool font and the &lt;/p&gt;
+
+&lt;h3 id=&quot;not&quot;&gt;:not&lt;/h3&gt;
+&lt;p&gt;The :not psuedo selector. It has come in pretty handy to me on a few occassions. For those of you new to psuedo selectors, &lt;code&gt;:not&lt;/code&gt; is used to select everything &lt;em&gt;except&lt;/em&gt; whatever selector you specify:&lt;/p&gt;
+
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
+.bookTitles:not(.redBooks) { color: blue; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above, all book titles will have red font except for those with the class of .redBooks.&lt;/p&gt;
+
+&lt;p&gt;### &lt;/p&gt;
+</description>
+        <pubDate>Tue, 10 Mar 2015 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml.com/snippets/css/2015-03-10-selector-specificity-with-pseudo-classes</link>
+        <guid isPermaLink="true">http://www.sassyhtml.com/snippets/css/2015-03-10-selector-specificity-with-pseudo-classes</guid>
+      </item>
+    
+      <item>
         <title>CSS Checkboxes and tabindex Accessibility</title>
         <description>&lt;p&gt;Create pure css checkboxes that are also accessibile with tabindex.&lt;/p&gt;
 
