@@ -25,7 +25,7 @@ Typically, it might go something like this:
 </code></pre>
 
 <pre class="language-css"><code>
-.toggleInput { position: absolute; opacity: 0; }
+.toggleInput { display: none; }
 
 .checkbox-slide {
   -webkit-transition: all 0.4s ease;

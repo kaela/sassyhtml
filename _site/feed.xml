@@ -48,7 +48,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.toggleInput { position: absolute; opacity: 0; }
+.toggleInput { display: none; }
 
 .checkbox-slide {
   -webkit-transition: all 0.4s ease;
