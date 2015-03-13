@@ -21,40 +21,51 @@ Typically, it might go something like this:
 
 <pre class="language-html"><code>
 &lt;input type="checkbox" id="age" class="toggleInput">
-&lt;label for="age" class="checkbox-styled">I am over 18 years of age&lt;/label>
+&lt;label for="age" id="label-age" class="checkbox-slide">Check me - I slide&lt;/label>
 </code></pre>
 
 <pre class="language-css"><code>
-.toggleInput { display: none; }
-.checkbox-styled {
-    .checkbox-slide:before {
-    content: "";
-    border: #ccc 1px solid;
-    height: 100%;
-    width: 40px;
-    position: absolute;
-    top: 0;
-    left: 0;
+.toggleInput { position: absolute; opacity: 0; }
+
+.checkbox-slide {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: block;
+  line-height: 40px;
+  overflow: hidden;
+  padding-left: 50px;
+  position: relative;
+  width: 100%;
 }
-.checkbox-styled:after {
-    font-size: 30px;
-    font-size: 3rem;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    color: #0063ba;
-    content: '\2713';
-    position: absolute;
-    top: -40px;
-    left: 0;
-    text-align: center;
-    width: 40px;
+
+.checkbox-slide:before {
+  content: "";
+  border: #ccc 1px solid;
+  height: 100%;
+  position: absolute; top: 0; left: 0;
+  width: 40px;
+  
 }
-.toggleInput:checked + .checkbox-styled:after {
-    top: 0;
+
+.checkbox-slide:after  {
+  font-size: 30px;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: #0063ba;
+  content: '\2713';
+  position: absolute; top: -40px; left: 0;
+  text-align: center;
+  width: 40px;
 }
+
+.toggleInput:checked + .checkbox-slide:after  { top: 0; }
 </code></pre>
 
 

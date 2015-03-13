@@ -44,40 +44,51 @@
 
 &lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
 &amp;lt;input type=&quot;checkbox&quot; id=&quot;age&quot; class=&quot;toggleInput&quot;&amp;gt;
-&amp;lt;label for=&quot;age&quot; class=&quot;checkbox-styled&quot;&amp;gt;I am over 18 years of age&amp;lt;/label&amp;gt;
+&amp;lt;label for=&quot;age&quot; id=&quot;label-age&quot; class=&quot;checkbox-slide&quot;&amp;gt;Check me - I slide&amp;lt;/label&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.toggleInput { display: none; }
-.checkbox-styled {
-    .checkbox-slide:before {
-    content: &quot;&quot;;
-    border: #ccc 1px solid;
-    height: 100%;
-    width: 40px;
-    position: absolute;
-    top: 0;
-    left: 0;
+.toggleInput { position: absolute; opacity: 0; }
+
+.checkbox-slide {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: block;
+  line-height: 40px;
+  overflow: hidden;
+  padding-left: 50px;
+  position: relative;
+  width: 100%;
 }
-.checkbox-styled:after {
-    font-size: 30px;
-    font-size: 3rem;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    color: #0063ba;
-    content: &#39;\2713&#39;;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    text-align: center;
-    width: 40px;
+
+.checkbox-slide:before {
+  content: &quot;&quot;;
+  border: #ccc 1px solid;
+  height: 100%;
+  position: absolute; top: 0; left: 0;
+  width: 40px;
+  
 }
-.toggleInput:checked + .checkbox-styled:after {
-    top: 0;
+
+.checkbox-slide:after  {
+  font-size: 30px;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: #0063ba;
+  content: &#39;\2713&#39;;
+  position: absolute; top: -40px; left: 0;
+  text-align: center;
+  width: 40px;
 }
+
+.toggleInput:checked + .checkbox-slide:after  { top: 0; }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;the-problem&quot;&gt;The Problem&lt;/h3&gt;
