@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>CSS Checkboxes and tabindex Accessibility – sassyhtml – A guide for html, css, js, other languages, and their frameworks</title>
+    <title>CSS Checkboxes and Tabindex Accessibility – sassyhtml – A guide for html, css, js, other languages, and their frameworks</title>
 
     <meta name="author" content="sassyhtml" />
     <meta name="description" content="A guide for html, css, js, other languages, and their frameworks">
@@ -39,7 +39,7 @@
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1>CSS Checkboxes and tabindex Accessibility</h1>
+  <h1>CSS Checkboxes and Tabindex Accessibility</h1>
   <div class="date">
     Written on January 16, 2015
   </div>
@@ -53,11 +53,13 @@
 
 <p>Typically, it might go something like this:</p>
 
-<pre><code class="language-html">&lt;input type="checkbox" id="age" class="toggleInput"&gt;
+<pre class="language-html"><code>
+&lt;input type="checkbox" id="age" class="toggleInput"&gt;
 &lt;label for="age" class="checkbox-styled"&gt;I am over 18 years of age&lt;/label&gt;
 </code></pre>
 
-<pre><code class="language-css">.toggleInput { display: none; }
+<pre class="language-css"><code>
+.toggleInput { display: none; }
 .checkbox-styled {
     .checkbox-slide:before {
     content: "";
@@ -90,15 +92,21 @@
 </code></pre>
 
 <h3 id="the-problem">The Problem</h3>
-<p>Tabindex skips right over that hidden input. That’s horrible for accessibility. For example, how would a person with poor or zero vision even know that input exists?</p>
+<p>Tabindex skips right over that hidden input. That’s horrible for accessibility. For example, how would a person with poor-to-zero vision even know that input exists?</p>
 
 <p>Fortunately, it’s a pretty easy fix</p>
 
 <h3 id="the-fix">The Fix</h3>
-<p>Change 
-<code>.toggleInput { display: none; }</code> 
-to 
-<code>.toggleInput { position: absolute; opacity: 0; }</code></p>
+<p>Change </p>
+
+<pre class="language-css"><code>
+.toggleInput { display: none; }
+</code></pre>
+<p>to </p>
+
+<pre class="language-css"><code>
+.toggleInput { position: absolute; opacity: 0; }
+</code></pre>
 
 <p>Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don’t want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there’s an easy way to adjust this in our case.</p>
 

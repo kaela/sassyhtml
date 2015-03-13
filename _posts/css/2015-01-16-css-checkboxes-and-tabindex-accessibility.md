@@ -1,5 +1,5 @@
 ---
-title: CSS Checkboxes and tabindex Accessibility
+title: CSS Checkboxes and Tabindex Accessibility
 author: kaela
 layout: post
 permalink: /snippets/css/css-checkboxes-and-tabindex-accessibility/
@@ -15,12 +15,12 @@ There are a lot of awesome tutorials that show us how to style inputs. Unfortuna
 
 Typically, it might go something like this:
 
-~~~ html
-<input type="checkbox" id="age" class="toggleInput">
-<label for="age" class="checkbox-styled">I am over 18 years of age</label>
-~~~
+<pre class="language-html"><code>
+&lt;input type="checkbox" id="age" class="toggleInput">
+&lt;label for="age" class="checkbox-styled">I am over 18 years of age&lt;/label>
+</code></pre>
 
-~~~ css
+<pre class="language-css"><code>
 .toggleInput { display: none; }
 .checkbox-styled {
     .checkbox-slide:before {
@@ -51,19 +51,25 @@ Typically, it might go something like this:
 .toggleInput:checked + .checkbox-styled:after {
     top: 0;
 }
-~~~
+</code></pre>
 
 
 ### The Problem
-Tabindex skips right over that hidden input. That's horrible for accessibility. For example, how would a person with poor or zero vision even know that input exists?
+Tabindex skips right over that hidden input. That's horrible for accessibility. For example, how would a person with poor-to-zero vision even know that input exists?
 
 Fortunately, it's a pretty easy fix
 
 
 ### The Fix
 Change 
-`.toggleInput { display: none; }` 
+
+<pre class="language-css"><code>
+.toggleInput { display: none; }
+</code></pre> 
 to 
-`.toggleInput { position: absolute; opacity: 0; }`
+
+<pre class="language-css"><code>
+.toggleInput { position: absolute; opacity: 0; }
+</code></pre>
 
 Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don't want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there's an easy way to adjust this in our case.
