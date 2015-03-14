@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-I’m Kaela. I work for a super fun fashion company in LA. 
+I’m Kaela. I work for a super fun fashion company in LA called SKECHERS. 
 
-sassyhtml.com is my reference guide for information I could not find within the the first five results of my Google searching. Yes, I am that lazy. 
+sassyhtml.com is my reference guide for information I could not find within the the first five results of my Google searching. Yes, I am that lazy. Sometimes I post stuff that intrigues me, too. 
 
 Feel free to copy me, or rewrite my stuff and make it better.
 
