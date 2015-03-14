@@ -14,10 +14,9 @@ Feel free to copy me, or rewrite my stuff and make it better.
 
 The very basic part of each website is the html. It’s our job to make it go from bland to a brand. It’s our job to make it sassy.
 
-## I use...
+## This site uses...
 
 * Jekyll
 * Github
-* HTML 
+* HTML/md
 * CSS (SCSS)
-* MD
