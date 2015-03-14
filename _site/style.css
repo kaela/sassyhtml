@@ -33,12 +33,6 @@ img {
   word-wrap: break-word;
 }
 
-code {
-  font-family: 'Courier', monospace;
-  font-size: 14px;
-  color: #999999;
-}
-
 /* Comment */
 .highlight .c, .highlight .c1 {
   color: #586e75;
@@ -437,6 +431,10 @@ p {
   margin: 15px 0;
 }
 
+p > a {
+  text-decoration: underline;
+}
+
 p + h2, ul + h2 {
   margin-top: 30px;
 }
@@ -601,6 +599,10 @@ nav > .active:after {
   transform-origin: 50% 50%;
 }
 
+.active {
+  background: #9bd6d1;
+}
+
 .post {
   margin-top: 30px;
 }
@@ -646,8 +648,17 @@ footer > a:hover {
   background: #311622;
 }
 
-.active {
-  background: #9bd6d1;
+/********* Code/Pre **********/
+code {
+  font-family: 'Courier', monospace;
+  font-size: 14px;
+  color: #999;
+}
+
+p > code, li > code {
+  background: #f3f3f3;
+  border-radius: 3px;
+  padding: 2px 4px;
 }
 
 pre.language-css:before {
@@ -676,16 +687,21 @@ pre {
   background: #333;
   color: #fff;
   display: block;
-  padding: 0 15px 15px 15px;
-  margin: 15px 0;
+  padding: 0 15px;
+  margin: 15px 0 30px;
 }
 pre:before {
   font-size: 20px;
   font-size: 2rem;
   background: #9bd6d1;
   color: #474747;
+  content: attr(class);
   display: block;
   line-height: 30px;
   margin: auto -15px;
   padding: 0 15px;
+}
+pre > code {
+  display: block;
+  padding: 15px 0;
 }

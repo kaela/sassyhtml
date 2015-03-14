@@ -7,6 +7,63 @@
     <atom:link href="http://www.sassyhtml.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>CSS Shorthand for all but the last item</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;Targetting a child element is easy: &lt;code&gt;:last-of-type&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Targeting all but one element is pretty easy, too: &lt;code&gt;:not&lt;/code&gt; &lt;/li&gt;
+  &lt;li&gt;Add those together and what do you get? One line of code and less markup in your html:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.navitem:not(:last-of-type) { whatever-styles-you-want }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;the-wrong-way&quot;&gt;The wrong way&lt;/h3&gt;
+&lt;p&gt;For the longest time, I have been adding a class to the last of my html items, and using the :not selector to style all items except that one, like so:&lt;/p&gt;
+
+&lt;pre class=&quot;html&quot;&gt;&lt;code&gt;&amp;lt;nav&amp;gt;
+  &amp;lt;a href=&quot;#&quot;&amp;gt;Home
+  &amp;lt;a href=&quot;#&quot;&amp;gt;About
+  &amp;lt;a href=&quot;#&quot;&amp;gt;Thoughts
+  &amp;lt;a href=&quot;#&quot; class= &quot;last-item&quot;&amp;gt;Projects
+&amp;lt;/nav&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.a { text-decoration: none; }
+.a:not(.last-item) { color: #ed7e2f; margin-right: 30px; }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which results in…&lt;/p&gt;
+&lt;style&gt;
+.section-wrap { margin: 15px 30px 45px; }
+.navitem { text-decoration: none; }
+.navitem:not(.last-navitem) { color: #ed7e2f ; margin-right: 30px; }
+&lt;/style&gt;
+
+&lt;div class=&quot;section-wrap&quot;&gt;
+	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Home&lt;/a&gt;
+	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;About&lt;/a&gt;
+	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Thoughts&lt;/a&gt;
+	&lt;a href=&quot;#&quot; class=&quot;navitem last-navitem&quot;&gt;Projects&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;silly-me&quot;&gt;Silly me.&lt;/h3&gt;
+&lt;p&gt;There’s an easy shorthand, so I don’t have to bloat my html: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The :not psuedo-class &lt;code&gt;+&lt;/code&gt; any child selector. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here it is again:&lt;/p&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.navitem:not(:last-of-type) { whatever-styles-you-want }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now I just need to go clean up my html! If you completely missed this selector combo like me, I hope this helps.&lt;/p&gt;
+
+&lt;p&gt;Here’s the &lt;a href=&quot;http://codepen.io/kaela/pen/EaOxwR&quot;&gt;codepen&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 14 Mar 2015 00:00:00 -0700</pubDate>
+        <link>http://www.sassyhtml.com/snippets/css/css-shorthand-for-all-but-the-last-item/</link>
+        <guid isPermaLink="true">http://www.sassyhtml.com/snippets/css/css-shorthand-for-all-but-the-last-item/</guid>
+      </item>
+    
+      <item>
         <title>Creating GitHub Subtasks in Issues</title>
         <description>&lt;p&gt;I just found my favorite to-do list organization. It’s inside of GitHub issues and can also be used as a subtask. It’s so perfect. So elegant. And so, so simple.&lt;/p&gt;
 
@@ -42,13 +99,10 @@
 
 &lt;p&gt;Typically, it might go something like this:&lt;/p&gt;
 
-&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
-&amp;lt;input type=&quot;checkbox&quot; id=&quot;age&quot; class=&quot;toggleInput&quot;&amp;gt;
-&amp;lt;label for=&quot;age&quot; id=&quot;label-age&quot; class=&quot;checkbox-slide&quot;&amp;gt;Check me - I slide&amp;lt;/label&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;&amp;lt;input type=&quot;checkbox&quot; id=&quot;age&quot; class=&quot;toggleInput&quot;&amp;gt;
+&amp;lt;label for=&quot;age&quot; id=&quot;label-age&quot; class=&quot;checkbox-slide&quot;&amp;gt;Check me - I slide&amp;lt;/label&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.toggleInput { display: none; }
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;.toggleInput { display: none; }
 
 .checkbox-slide {
   -webkit-transition: all 0.4s ease;
@@ -88,8 +142,7 @@
   width: 40px;
 }
 
-.toggleInput:checked + .checkbox-slide:after  { top: 0; }
-&lt;/code&gt;&lt;/pre&gt;
+.toggleInput:checked + .checkbox-slide:after  { top: 0; }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;the-problem&quot;&gt;The Problem&lt;/h3&gt;
 &lt;p&gt;Tabindex skips right over that hidden input. That’s horrible for accessibility. For example, how would a person with poor-to-zero vision even know that input exists?&lt;/p&gt;
@@ -99,14 +152,11 @@
 &lt;h3 id=&quot;the-fix&quot;&gt;The Fix&lt;/h3&gt;
 &lt;p&gt;Change &lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.toggleInput { display: none; }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;.toggleInput { display: none; }&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;to &lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.toggleInput { position: absolute; opacity: 0; }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;.toggleInput { position: absolute; opacity: 0; }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don’t want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there’s an easy way to adjust this in our case.&lt;/p&gt;
 </description>
@@ -123,8 +173,7 @@
 
 &lt;p&gt;Welp, that just doesn’t work. Now the spacing is all screwy. Not to worry; three lines of CSS will fix that for you:&lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-sup {
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;sup {
   vertical-align: top;
   position: relative;
   top: -0.3em;
@@ -140,12 +189,10 @@ sup {
 &lt;h2 id=&quot;alternatively&quot;&gt;Alternatively…&lt;/h2&gt;
 &lt;p&gt;If you like to keep this kind of stuff controlled by css, use this:&lt;/p&gt;
 
-&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
-&amp;lt;h2  class=&quot;trademark&quot;&amp;gt;Join SKECHERS Elite&amp;lt;/h2&amp;gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;&amp;lt;h2  class=&quot;trademark&quot;&amp;gt;Join SKECHERS Elite&amp;lt;/h2&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.trademark:after {
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;.trademark:after {
   content: &quot;\2122&quot;;
   display: inline-block;
   margin-right: -1px; margin-left: 1px;
@@ -204,8 +251,7 @@ sup {
 
 &lt;p&gt;On to .promo-img. This is where stuff gets interesting, so pay attention! I have:&lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-.promo-img {
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;.promo-img {
   position: absolute; 
   top: 0; 
   left: 50%;
@@ -236,8 +282,7 @@ sup {
 
 &lt;p&gt;Here is an example of a super simple structure for a website:&lt;/p&gt;
 
-&lt;pre class=&quot;language-wp&quot;&gt;&lt;code&gt;
-- home
+&lt;pre class=&quot;language-wp&quot;&gt;&lt;code&gt;- home
 -- css
 --- de css posts
 -- scss
@@ -308,8 +353,7 @@ etc.
 
 &lt;h3 id=&quot;what-worked&quot;&gt;What worked&lt;/h3&gt;
 
-&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;
-add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
+&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
 
 function add_category_to_single($classes) {
   if (is_single() ) {
@@ -330,8 +374,7 @@ function add_category_to_single($classes) {
 
 &lt;h3 id=&quot;what-did-not-work&quot;&gt;What did not work&lt;/h3&gt;
 
-&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;
-add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
+&lt;pre class=&quot;language-php&quot;&gt;&lt;code&gt;add_filter(&#39;body_class&#39;,&#39;add_category_to_single&#39;);
 function add_category_to_single($classes, $class) {
   if (is_single() ) {
     global $post;
@@ -349,8 +392,7 @@ function add_category_to_single($classes, $class) {
 
 &lt;p&gt;This looks REALLY close to the working code, but the function properties includes a second function value, “$class”, which outputs the following error:&lt;/p&gt;
 
-&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
-Warning: Missing argument 2 for add_category_to_single() in /home/tonguet1/public_html/wp-content/themes/TTM/functions.php on line 6
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;Warning: Missing argument 2 for add_category_to_single() in /home/tonguet1/public_html/wp-content/themes/TTM/functions.php on line 6
 News class=&quot;single postid-493 logged-in category category-news&quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -358,8 +400,7 @@ News class=&quot;single postid-493 logged-in category category-news&quot;&amp;gt
 
 &lt;h3 id=&quot;this-also-didnt-work&quot;&gt;This also didn’t work&lt;/h3&gt;
 
-&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;
-&amp;lt;body id=&quot;top&quot; &amp;lt;?php if (function_exists(&#39;body_class&#39;)) body_class(&#39;category-&#39;.$class ); ?&amp;gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code&gt;&amp;lt;body id=&quot;top&quot; &amp;lt;?php if (function_exists(&#39;body_class&#39;)) body_class(&#39;category-&#39;.$class ); ?&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Instead of adding the category class, it just adds “category-“ so it isn’t really helpful. If you use this along with the snippet posted above, it will add an additional class of “category” which again, isn’t helpful.&lt;/p&gt;
@@ -378,8 +419,7 @@ News class=&quot;single postid-493 logged-in category category-news&quot;&amp;gt
 
 &lt;h3 id=&quot;rem-fans-like-to-use-this-but-chrome-doesn8217t-like-it&quot;&gt;rem fans like to use this*, but Chrome doesn’t like it:&lt;/h3&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-html { font-size: 62.5%; } 
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;html { font-size: 62.5%; } 
 body { font-size: 1.4rem; } 
 h1   { font-size: 2.4rem; } 
 &lt;/code&gt;&lt;/pre&gt;
@@ -392,8 +432,7 @@ h1   { font-size: 2.4rem; }
 
 &lt;p&gt;Chrome will not let you set that base font below 100% (16px). Well, sometimes it does. But sometimes it doesn’t. Check out what happens to the body and h1 font sizes. &lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-html { font-size: 62.5%; }
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;html { font-size: 62.5%; }
 body { font-size: 1.4rem; } /* 1.4 * 16 = 22.4px */
 h1   { font-size: 2.4rem; } /* 2.4 * 16 = 38.4px */
 &lt;/code&gt;&lt;/pre&gt;
@@ -404,24 +443,21 @@ h1   { font-size: 2.4rem; } /* 2.4 * 16 = 38.4px */
 
 &lt;p&gt;Fortunately, the workaround is pretty simple. The actual issue here is the rem. So, set the body font size with em. Since the body tag is generally dependent on the root/html, there should be no cascading issues. &lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-body {font-size: 1.4em;} 
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;body {font-size: 1.4em;} 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;or this&lt;/p&gt;
 
 &lt;p&gt;I’m not a huge fan of these next two options. They do work, but they seem messy, especially the last one. I really don’t like applying styling to * (aside from the limited amount I use for reset).&lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-* {font-size: 1.4rem;} 
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;* {font-size: 1.4rem;} 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;or this&lt;/p&gt;
 
-&lt;p&gt;You could replace &amp;lt;div&amp;gt; with whatever you use for your wrapper&lt;/p&gt;
+&lt;p&gt;You could replace &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with whatever you use for your wrapper&lt;/p&gt;
 
-&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;
-body &amp;gt; div {font-size: 1.4rem;} 
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code&gt;body &amp;gt; div {font-size: 1.4rem;} 
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Fri, 07 Mar 2014 00:00:00 -0800</pubDate>

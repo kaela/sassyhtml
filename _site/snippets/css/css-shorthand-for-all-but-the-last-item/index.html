@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>REM units are not applied correctly to body tag in Chrome – sassyhtml – A guide for html, css, js, other languages, and their frameworks</title>
+    <title>CSS Shorthand for all but the last item – sassyhtml – A guide for html, css, js, other languages, and their frameworks</title>
 
     <meta name="author" content="sassyhtml" />
     <meta name="description" content="A guide for html, css, js, other languages, and their frameworks">
@@ -39,56 +39,61 @@
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1>REM units are not applied correctly to body tag in Chrome</h1>
+  <h1>CSS Shorthand for all but the last item</h1>
   <div class="date">
-    Written on March  7, 2014
+    Written on March 14, 2015
   </div>
 
   <div class="entry">
-    <p><a href="https://code.google.com/p/chromium/issues/detail?id=319623">Track this issue</a> on chromium. It was closed back in January, but it still occasionally happens for me.</p>
+    <ul>
+  <li>Targetting a child element is easy: <code>:last-of-type</code></li>
+  <li>Targeting all but one element is pretty easy, too: <code>:not</code> </li>
+  <li>Add those together and what do you get? One line of code and less markup in your html:</li>
+</ul>
 
-<h3 id="rem-fans-like-to-use-this-but-chrome-doesn8217t-like-it">rem fans like to use this*, but Chrome doesn’t like it:</h3>
+<pre class="css"><code>.navitem:not(:last-of-type) { whatever-styles-you-want }</code></pre>
 
-<pre class="language-css"><code>html { font-size: 62.5%; } 
-body { font-size: 1.4rem; } 
-h1   { font-size: 2.4rem; } 
-</code></pre>
+<h3 id="the-wrong-way">The wrong way</h3>
+<p>For the longest time, I have been adding a class to the last of my html items, and using the :not selector to style all items except that one, like so:</p>
 
-<p>*a magical snippet from <a href="http://snook.ca/archives/html_and_css/font-size-with-rem">Jonathan Snook</a> </p>
+<pre class="html"><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Home
+  &lt;a href="#"&gt;About
+  &lt;a href="#"&gt;Thoughts
+  &lt;a href="#" class= "last-item"&gt;Projects
+&lt;/nav&gt;</code></pre>
 
-<p>We use 62.5% on the html to bring the base font down to 10px, for easy multiplication. Then, the rest is SUPPOSED to be easy. That body font-size should 1.4rem * 10px = 14px. The h1 should have a font-size of 24px.</p>
+<pre class="css"><code>.a { text-decoration: none; }
+.a:not(.last-item) { color: #ed7e2f; margin-right: 30px; }</code></pre>
 
-<h3 id="what-actually-happens-in-chrome-about-50-of-the-time">What actually happens in Chrome (about 50% of the time):</h3>
+<p>which results in…</p>
+<style>
+.section-wrap { margin: 15px 30px 45px; }
+.navitem { text-decoration: none; }
+.navitem:not(.last-navitem) { color: #ed7e2f ; margin-right: 30px; }
+</style>
 
-<p>Chrome will not let you set that base font below 100% (16px). Well, sometimes it does. But sometimes it doesn’t. Check out what happens to the body and h1 font sizes. </p>
+<div class="section-wrap">
+	<a href="#" class="navitem">Home</a>
+	<a href="#" class="navitem">About</a>
+	<a href="#" class="navitem">Thoughts</a>
+	<a href="#" class="navitem last-navitem">Projects</a>
+</div>
 
-<pre class="language-css"><code>html { font-size: 62.5%; }
-body { font-size: 1.4rem; } /* 1.4 * 16 = 22.4px */
-h1   { font-size: 2.4rem; } /* 2.4 * 16 = 38.4px */
-</code></pre>
+<h3 id="silly-me">Silly me.</h3>
+<p>There’s an easy shorthand, so I don’t have to bloat my html: </p>
 
-<p>Since we tried setting that root font-size below 100%, or 16px, Chrome reverted back to using 16px as the root font size.</p>
+<ul>
+  <li>The :not psuedo-class <code>+</code> any child selector. </li>
+</ul>
 
-<h3 id="fix-it-like-this">Fix it like this:</h3>
+<p>Here it is again:</p>
 
-<p>Fortunately, the workaround is pretty simple. The actual issue here is the rem. So, set the body font size with em. Since the body tag is generally dependent on the root/html, there should be no cascading issues. </p>
+<pre class="css"><code>.navitem:not(:last-of-type) { whatever-styles-you-want }</code></pre>
 
-<pre class="language-css"><code>body {font-size: 1.4em;} 
-</code></pre>
+<p>Now I just need to go clean up my html! If you completely missed this selector combo like me, I hope this helps.</p>
 
-<p>or this</p>
-
-<p>I’m not a huge fan of these next two options. They do work, but they seem messy, especially the last one. I really don’t like applying styling to * (aside from the limited amount I use for reset).</p>
-
-<pre class="language-css"><code>* {font-size: 1.4rem;} 
-</code></pre>
-
-<p>or this</p>
-
-<p>You could replace <code>&lt;div&gt;</code> with whatever you use for your wrapper</p>
-
-<pre class="language-css"><code>body &gt; div {font-size: 1.4rem;} 
-</code></pre>
+<p>Here’s the <a href="http://codepen.io/kaela/pen/EaOxwR">codepen</a>.</p>
 
   </div>
 

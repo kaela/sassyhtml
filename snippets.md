@@ -21,3 +21,11 @@ permalink: /snippets/
 	</li>
 	{% endfor %}
 </ul>
+[Workflow]({{ site.baseurl }}/snippets/workflow)
+<ul>
+	{% for post in site.categories.workflow %}
+	<li>
+		<a href="{{post.permalink}}">{{post.title}}</a>
+	</li>
+	{% endfor %}
+</ul>

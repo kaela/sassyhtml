@@ -16,8 +16,7 @@ Here is an option for people who are okay with using "categories" as your filing
 
 Here is an example of a super simple structure for a website:
 
-<pre class="language-wp"><code>
-- home
+<pre class="language-wp"><code>- home
 -- css
 --- de css posts
 -- scss

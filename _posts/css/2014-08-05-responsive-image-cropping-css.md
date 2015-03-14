@@ -46,8 +46,7 @@ Next, set up two empty divs: .promo-imgWrapper and .promo-textWrapper. Give the 
 
 On to .promo-img. This is where stuff gets interesting, so pay attention! I have:
 
-<pre class="language-css"><code>
-.promo-img {
+<pre class="language-css"><code>.promo-img {
   position: absolute; 
   top: 0; 
   left: 50%;

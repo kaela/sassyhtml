@@ -20,8 +20,7 @@ tags:
 
 ### rem fans like to use this*, but Chrome doesn&#8217;t like it:
 
-<pre class="language-css"><code>
-html { font-size: 62.5%; } 
+<pre class="language-css"><code>html { font-size: 62.5%; } 
 body { font-size: 1.4rem; } 
 h1   { font-size: 2.4rem; } 
 </code></pre>
@@ -34,8 +33,7 @@ We use 62.5% on the html to bring the base font down to 10px, for easy multiplic
 
 Chrome will not let you set that base font below 100% (16px). Well, sometimes it does. But sometimes it doesn't. Check out what happens to the body and h1 font sizes. 
 
-<pre class="language-css"><code>
-html { font-size: 62.5%; }
+<pre class="language-css"><code>html { font-size: 62.5%; }
 body { font-size: 1.4rem; } /* 1.4 * 16 = 22.4px */
 h1   { font-size: 2.4rem; } /* 2.4 * 16 = 38.4px */
 </code></pre>
@@ -46,22 +44,19 @@ Since we tried setting that root font-size below 100%, or 16px, Chrome reverted 
 
 Fortunately, the workaround is pretty simple. The actual issue here is the rem. So, set the body font size with em. Since the body tag is generally dependent on the root/html, there should be no cascading issues. 
 
-<pre class="language-css"><code>
-body {font-size: 1.4em;} 
+<pre class="language-css"><code>body {font-size: 1.4em;} 
 </code></pre>
 
 or this
 
 I'm not a huge fan of these next two options. They do work, but they seem messy, especially the last one. I really don't like applying styling to * (aside from the limited amount I use for reset).
 
-<pre class="language-css"><code>
-* {font-size: 1.4rem;} 
+<pre class="language-css"><code>* {font-size: 1.4rem;} 
 </code></pre>
 
 or this
 
-You could replace \<div> with whatever you use for your wrapper
+You could replace `<div>` with whatever you use for your wrapper
 
-<pre class="language-css"><code>
-body > div {font-size: 1.4rem;} 
+<pre class="language-css"><code>body > div {font-size: 1.4rem;} 
 </code></pre>

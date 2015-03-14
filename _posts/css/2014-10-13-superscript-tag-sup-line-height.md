@@ -12,8 +12,7 @@ Using \<sup> is really useful when you're dealing with trademarks. Most of the t
 
 Welp, that just doesn't work. Now the spacing is all screwy. Not to worry; three lines of CSS will fix that for you:
 
-<pre class="language-css"><code>
-sup {
+<pre class="language-css"><code>sup {
   vertical-align: top;
   position: relative;
   top: -0.3em;
@@ -29,12 +28,10 @@ line-height: perfect;
 ## Alternatively...
 If you like to keep this kind of stuff controlled by css, use this:
 
-<pre class="language-html"><code>
-&lt;h2  class="trademark">Join SKECHERS Elite&lt;/h2>
+<pre class="language-html"><code>&lt;h2  class="trademark">Join SKECHERS Elite&lt;/h2>
 </code></pre>
 
-<pre class="language-css"><code>
-.trademark:after {
+<pre class="language-css"><code>.trademark:after {
   content: "\2122";
   display: inline-block;
   margin-right: -1px; margin-left: 1px;

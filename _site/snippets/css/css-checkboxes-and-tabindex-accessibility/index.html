@@ -58,13 +58,10 @@
 
 <p>Typically, it might go something like this:</p>
 
-<pre class="language-html"><code>
-&lt;input type="checkbox" id="age" class="toggleInput"&gt;
-&lt;label for="age" id="label-age" class="checkbox-slide"&gt;Check me - I slide&lt;/label&gt;
-</code></pre>
+<pre class="language-html"><code>&lt;input type="checkbox" id="age" class="toggleInput"&gt;
+&lt;label for="age" id="label-age" class="checkbox-slide"&gt;Check me - I slide&lt;/label&gt;</code></pre>
 
-<pre class="language-css"><code>
-.toggleInput { display: none; }
+<pre class="language-css"><code>.toggleInput { display: none; }
 
 .checkbox-slide {
   -webkit-transition: all 0.4s ease;
@@ -104,8 +101,7 @@
   width: 40px;
 }
 
-.toggleInput:checked + .checkbox-slide:after  { top: 0; }
-</code></pre>
+.toggleInput:checked + .checkbox-slide:after  { top: 0; }</code></pre>
 
 <h3 id="the-problem">The Problem</h3>
 <p>Tabindex skips right over that hidden input. That’s horrible for accessibility. For example, how would a person with poor-to-zero vision even know that input exists?</p>
@@ -115,14 +111,11 @@
 <h3 id="the-fix">The Fix</h3>
 <p>Change </p>
 
-<pre class="language-css"><code>
-.toggleInput { display: none; }
-</code></pre>
+<pre class="language-css"><code>.toggleInput { display: none; }</code></pre>
+
 <p>to </p>
 
-<pre class="language-css"><code>
-.toggleInput { position: absolute; opacity: 0; }
-</code></pre>
+<pre class="language-css"><code>.toggleInput { position: absolute; opacity: 0; }</code></pre>
 
 <p>Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don’t want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there’s an easy way to adjust this in our case.</p>
 

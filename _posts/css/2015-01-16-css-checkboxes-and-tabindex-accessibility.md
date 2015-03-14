@@ -19,13 +19,10 @@ There are a lot of awesome tutorials that show us how to style inputs. Unfortuna
 
 Typically, it might go something like this:
 
-<pre class="language-html"><code>
-&lt;input type="checkbox" id="age" class="toggleInput">
-&lt;label for="age" id="label-age" class="checkbox-slide">Check me - I slide&lt;/label>
-</code></pre>
+<pre class="language-html"><code>&lt;input type="checkbox" id="age" class="toggleInput">
+&lt;label for="age" id="label-age" class="checkbox-slide">Check me - I slide&lt;/label></code></pre>
 
-<pre class="language-css"><code>
-.toggleInput { display: none; }
+<pre class="language-css"><code>.toggleInput { display: none; }
 
 .checkbox-slide {
   -webkit-transition: all 0.4s ease;
@@ -65,8 +62,7 @@ Typically, it might go something like this:
   width: 40px;
 }
 
-.toggleInput:checked + .checkbox-slide:after  { top: 0; }
-</code></pre>
+.toggleInput:checked + .checkbox-slide:after  { top: 0; }</code></pre>
 
 
 ### The Problem
@@ -78,13 +74,10 @@ Fortunately, it's a pretty easy fix
 ### The Fix
 Change 
 
-<pre class="language-css"><code>
-.toggleInput { display: none; }
-</code></pre> 
+<pre class="language-css"><code>.toggleInput { display: none; }</code></pre> 
+
 to 
 
-<pre class="language-css"><code>
-.toggleInput { position: absolute; opacity: 0; }
-</code></pre>
+<pre class="language-css"><code>.toggleInput { position: absolute; opacity: 0; }</code></pre>
 
 Basically, browsers skip over content that is hidden. This is typically a good thing. For example, you might be hiding elements on smaller screens, and you don't want the user tabbing 5 times before getting to the next visible element. However, in cases where developers are attempting to make ugly inputs pretty, that feature can start looking like a bug. Luckily, there's an easy way to adjust this in our case.

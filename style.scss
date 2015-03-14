@@ -48,6 +48,7 @@ h2 { @include font-size(2.4); }
 h3 { @include font-size(2); }
 h4 { @include font-size(1.8); }
 p  { margin: $pad 0; }
+p>a{ text-decoration: underline; }
 
 p+h2, ul+h2  { margin-top: $pad*2; }
 
@@ -174,6 +175,7 @@ nav {
 // .main
 //
 
+.active   { background: $bg; }
 .post     { margin-top: $pad*2; }
 .comments { margin-top: $pad; }
 
@@ -211,7 +213,21 @@ footer {
 }
 
 
-.active { background: $bg; }
+
+
+
+/********* Code/Pre **********/
+code {
+  font-family: 'Courier', monospace;
+  font-size: 14px;
+  color: #999;
+}
+
+p > code, li > code {
+  background: #f3f3f3;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
 
 pre.language-css:before  { content: 'CSS'; }
 pre.language-html:before { content: 'HTML'; }
@@ -224,16 +240,22 @@ pre {
   background: #333;
   color: #fff;
   display: block;
-  padding: 0 15px 15px 15px;
-  margin: 15px 0;
+  padding: 0 15px;
+  margin: 15px 0 30px;
   
   &:before {
     @include font-size(2);
     background: $bg;
     color: $text;
+    content: attr(class);
     display: block;
     line-height: $pad*2;
     margin: auto $pad*-1;
     padding: 0 $pad;
+  }
+
+  & > code {
+    display: block;
+    padding: 15px 0;
   }
 }

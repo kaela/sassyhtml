@@ -51,8 +51,7 @@
 
 <p>Welp, that just doesn’t work. Now the spacing is all screwy. Not to worry; three lines of CSS will fix that for you:</p>
 
-<pre class="language-css"><code>
-sup {
+<pre class="language-css"><code>sup {
   vertical-align: top;
   position: relative;
   top: -0.3em;
@@ -68,12 +67,10 @@ sup {
 <h2 id="alternatively">Alternatively…</h2>
 <p>If you like to keep this kind of stuff controlled by css, use this:</p>
 
-<pre class="language-html"><code>
-&lt;h2  class="trademark"&gt;Join SKECHERS Elite&lt;/h2&gt;
+<pre class="language-html"><code>&lt;h2  class="trademark"&gt;Join SKECHERS Elite&lt;/h2&gt;
 </code></pre>
 
-<pre class="language-css"><code>
-.trademark:after {
+<pre class="language-css"><code>.trademark:after {
   content: "\2122";
   display: inline-block;
   margin-right: -1px; margin-left: 1px;
