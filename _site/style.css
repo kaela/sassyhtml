@@ -469,9 +469,12 @@ ul ul, ol ul {
 
 /********** Global Styling **********/
 img {
+  max-width: 100%;
+}
+
+img:not(.avatar) {
   border: #cccccc 1px dashed;
   padding: 5px;
-  max-width: 100%;
 }
 
 .date {

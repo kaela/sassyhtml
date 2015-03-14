@@ -70,12 +70,9 @@ ul ul, ol ul { list-style-type: circle; }
 
 /********** Global Styling **********/
 
-img   { 
-  border: $border 1px dashed;
-  padding: 5px;
-  max-width: 100%; 
-}
-.date { font-style: italic; color: $btn; margin-top: 5px; }
+img              { max-width: 100%; }
+img:not(.avatar) { border: $border 1px dashed; padding: 5px; }
+.date            { font-style: italic; color: $btn; margin-top: 5px; }
 
 ::-moz-selection { color: $text; background: $bg; }
 ::selection      { color: $text; background: $bg; }
