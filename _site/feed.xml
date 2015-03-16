@@ -2,61 +2,143 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sassyhtml</title>
-    <description>A guide for html, css, js, other languages, and their frameworks</description>
+    <description>A guide for css, html and some other stuff</description>
     <link>http://www.sassyhtml.com</link>
     <atom:link href="http://www.sassyhtml.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>CSS Shorthand for all but the last item</title>
         <description>&lt;ul&gt;
-  &lt;li&gt;Targetting a child element is easy: &lt;code&gt;:last-of-type&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Targeting a child element is easy: &lt;code&gt;:last-of-type&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Targeting all but one element is pretty easy, too: &lt;code&gt;:not&lt;/code&gt; &lt;/li&gt;
-  &lt;li&gt;Add those together and what do you get? One line of code and less markup in your html:&lt;/li&gt;
+  &lt;li&gt;Chain those together and what do you get? One line of code and less markup in your html!&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.navitem:not(:last-of-type) { whatever-styles-you-want }&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;there-are-several-different-approaches-to-get-this&quot;&gt;There are several different approaches to get this:&lt;/h3&gt;
 
-&lt;h3 id=&quot;the-wrong-way&quot;&gt;The wrong way&lt;/h3&gt;
-&lt;p&gt;For the longest time, I have been adding a class to the last of my html items, and using the :not selector to style all items except that one, like so:&lt;/p&gt;
-
-&lt;pre class=&quot;html&quot;&gt;&lt;code&gt;&amp;lt;nav&amp;gt;
-  &amp;lt;a href=&quot;#&quot;&amp;gt;Home
-  &amp;lt;a href=&quot;#&quot;&amp;gt;About
-  &amp;lt;a href=&quot;#&quot;&amp;gt;Thoughts
-  &amp;lt;a href=&quot;#&quot; class= &quot;last-item&quot;&amp;gt;Projects
-&amp;lt;/nav&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.a { text-decoration: none; }
-.a:not(.last-item) { color: #ed7e2f; margin-right: 30px; }&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which results in…&lt;/p&gt;
 &lt;style&gt;
-.section-wrap { margin: 15px 30px 45px; }
-.navitem { text-decoration: none; }
-.navitem:not(.last-navitem) { color: #ed7e2f ; margin-right: 30px; }
+.section-wrap { margin: 15px 30px; }
+.navitem:not(:last-of-type) { color: #ed7e2f ; margin-right: 30px;}
 &lt;/style&gt;
 
 &lt;div class=&quot;section-wrap&quot;&gt;
-	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Home&lt;/a&gt;
-	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;About&lt;/a&gt;
-	&lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Thoughts&lt;/a&gt;
-	&lt;a href=&quot;#&quot; class=&quot;navitem last-navitem&quot;&gt;Projects&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Home&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;About&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Thoughts&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;navitem&quot;&gt;Projects&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;silly-me&quot;&gt;Silly me.&lt;/h3&gt;
-&lt;p&gt;There’s an easy shorthand, so I don’t have to bloat my html: &lt;/p&gt;
+&lt;p&gt;But, what’s the best way of going about that?&lt;/p&gt;
+
+&lt;h3 id=&quot;the-dirty-html--redundant-css-way&quot;&gt;The dirty HTML / redundant CSS way&lt;/h3&gt;
+&lt;p&gt;Add a class to the last child element:&lt;/p&gt;
+
+&lt;pre class=&quot;html&quot;&gt;&lt;code&gt;
+&amp;lt;ul class=&quot;section-wrap&quot;&amp;gt;
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Home
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;About
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Thoughts
+  &amp;lt;li class= &quot;navitem last-navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Projects
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;
+.navitem { margin-right: 30px; }
+.last-navitem { margin-right: 0; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or…&lt;/p&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;
+.navitem { margin-right: 30px; }
+.navitem.last-navitem { margin-right: 0; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Good:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The :not psuedo-class &lt;code&gt;+&lt;/code&gt; any child selector. &lt;/li&gt;
+  &lt;li&gt;This is the fastest way to render your code&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Here it is again:&lt;/p&gt;
+&lt;p&gt;The Bad &lt;/p&gt;
 
-&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;.navitem:not(:last-of-type) { whatever-styles-you-want }&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;You’ll either need to ensure that &lt;code&gt;.last-navitem&lt;/code&gt; never gets moved before &lt;code&gt;.navitem&lt;/code&gt; in the css or you’re going to need to get more specific:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code&gt;.navitem.last-navitem&lt;/code&gt;: (not good - we’re starting to run into specificity differences)&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;last-navitem { margin-right: 0!important; }&lt;/code&gt;: Really? I hope you’re not using !important on any of your code&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Styles should be handled outside of the html (quoting this bit from &lt;a href=&quot;http://www.reddit.com/user/birjolaxew&quot;&gt;birjolaxew&lt;/a&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;html is a structural language&lt;/li&gt;
+      &lt;li&gt;The last item is already structured as the last item, simply by being the last item&lt;/li&gt;
+      &lt;li&gt;Adding a class to it is redundant and frankly ugly &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Now I just need to go clean up my html! If you completely missed this selector combo like me, I hope this helps.&lt;/p&gt;
+&lt;h3 id=&quot;the-redundant-css-way&quot;&gt;The redundant CSS way&lt;/h3&gt;
 
-&lt;p&gt;Here’s the &lt;a href=&quot;http://codepen.io/kaela/pen/EaOxwR&quot;&gt;codepen&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&quot;html&quot;&gt;&lt;code&gt;
+&amp;lt;ul class=&quot;section-wrap&quot;&amp;gt;
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Home
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;About
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Thoughts
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Projects
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;
+.navitem { margin-right: 30px; }
+.navitem:last-of-type { margin-right: 0; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Good:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You’re not going to lose &lt;em&gt;that&lt;/em&gt; much on performance compared to the first example&lt;/li&gt;
+  &lt;li&gt;Keeps your styles outside of your html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Bad:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You define &lt;code&gt;.navitem&lt;/code&gt;’s styles twice, which causes the browser to repaint (maybe don’t put this on a tag used 1000 times throughout the site)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-shorthand&quot;&gt;The shorthand&lt;/h3&gt;
+
+&lt;pre class=&quot;html&quot;&gt;&lt;code&gt;
+&amp;lt;ul class=&quot;section-wrap&quot;&amp;gt;
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Home
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;About
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Thoughts
+  &amp;lt;li class= &quot;navitem&quot;&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Projects
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;css&quot;&gt;&lt;code&gt;
+.navitem:not(:last-of-type) { margin-right: 30px; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Good:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;One line of css and no html bloat!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Bad:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You define &lt;code&gt;.navitem&lt;/code&gt;’s styles twice, which causes the browser to repaint (maybe don’t put this on a tag used 1000 times throughout the site) (see conclusion for more details on this one)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;At the moment, I’m not sure if there is any difference in performance hit between the second example and this one. If you have any insight, “prey,” do tell!&lt;/p&gt;
+
+&lt;p&gt;Here’s the &lt;a href=&quot;http://codepen.io/kaela/pen/EaOxwR&quot;&gt;codepen&lt;/a&gt; for the shorthand.&lt;/p&gt;
 </description>
         <pubDate>Sat, 14 Mar 2015 00:00:00 -0700</pubDate>
         <link>http://www.sassyhtml.com/snippets/css/css-shorthand-for-all-but-the-last-item/</link>

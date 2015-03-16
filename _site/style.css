@@ -420,6 +420,8 @@ h2 {
 h3 {
   font-size: 20px;
   font-size: 2rem;
+  margin-top: 45px;
+  text-transform: capitalize;
 }
 
 h4 {

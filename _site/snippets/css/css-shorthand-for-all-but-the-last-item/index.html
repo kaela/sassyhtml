@@ -5,17 +5,17 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>CSS Shorthand for all but the last item – sassyhtml – A guide for html, css, js, other languages, and their frameworks</title>
+    <title>CSS Shorthand for all but the last item – sassyhtml – A guide for css, html and some other stuff</title>
 
     <meta name="author" content="sassyhtml" />
-    <meta name="description" content="A guide for html, css, js, other languages, and their frameworks">
+    <meta name="description" content="A guide for css, html and some other stuff">
 
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab|Merriweather' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="sassyhtml - A guide for html, css, js, other languages, and their frameworks" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="sassyhtml - A guide for css, html and some other stuff" href="/feed.xml" />
 
   </head>
 
@@ -32,7 +32,7 @@
         <a href="/" class="site-avatar"><img src="https://avatars3.githubusercontent.com/u/3902146?v=3&s=140" class="avatar" /></a>
         <div class="site-info">
           <h1 class="site-name"><a href="/">sassyhtml</a></h1>
-          <p class="site-description">A guide for html, css, js, other languages, and their frameworks</p>
+          <p class="site-description">A guide for css, html and some other stuff</p>
         </div>
       </header>
     </section>
@@ -46,54 +46,136 @@
 
   <div class="entry">
     <ul>
-  <li>Targetting a child element is easy: <code>:last-of-type</code></li>
+  <li>Targeting a child element is easy: <code>:last-of-type</code></li>
   <li>Targeting all but one element is pretty easy, too: <code>:not</code> </li>
-  <li>Add those together and what do you get? One line of code and less markup in your html:</li>
+  <li>Chain those together and what do you get? One line of code and less markup in your html!</li>
 </ul>
 
-<pre class="css"><code>.navitem:not(:last-of-type) { whatever-styles-you-want }</code></pre>
+<h3 id="there-are-several-different-approaches-to-get-this">There are several different approaches to get this:</h3>
 
-<h3 id="the-wrong-way">The wrong way</h3>
-<p>For the longest time, I have been adding a class to the last of my html items, and using the :not selector to style all items except that one, like so:</p>
-
-<pre class="html"><code>&lt;nav&gt;
-  &lt;a href="#"&gt;Home
-  &lt;a href="#"&gt;About
-  &lt;a href="#"&gt;Thoughts
-  &lt;a href="#" class= "last-item"&gt;Projects
-&lt;/nav&gt;</code></pre>
-
-<pre class="css"><code>.a { text-decoration: none; }
-.a:not(.last-item) { color: #ed7e2f; margin-right: 30px; }</code></pre>
-
-<p>which results in…</p>
 <style>
-.section-wrap { margin: 15px 30px 45px; }
-.navitem { text-decoration: none; }
-.navitem:not(.last-navitem) { color: #ed7e2f ; margin-right: 30px; }
+.section-wrap { margin: 15px 30px; }
+.navitem:not(:last-of-type) { color: #ed7e2f ; margin-right: 30px;}
 </style>
 
 <div class="section-wrap">
-	<a href="#" class="navitem">Home</a>
-	<a href="#" class="navitem">About</a>
-	<a href="#" class="navitem">Thoughts</a>
-	<a href="#" class="navitem last-navitem">Projects</a>
+  <a href="#" class="navitem">Home</a>
+  <a href="#" class="navitem">About</a>
+  <a href="#" class="navitem">Thoughts</a>
+  <a href="#" class="navitem">Projects</a>
 </div>
 
-<h3 id="silly-me">Silly me.</h3>
-<p>There’s an easy shorthand, so I don’t have to bloat my html: </p>
+<p>But, what’s the best way of going about that?</p>
+
+<h3 id="the-dirty-html--redundant-css-way">The dirty HTML / redundant CSS way</h3>
+<p>Add a class to the last child element:</p>
+
+<pre class="html"><code>
+&lt;ul class="section-wrap"&gt;
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Home
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;About
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Thoughts
+  &lt;li class= "navitem last-navitem"&gt;&lt;a href="#"&gt;Projects
+&lt;/ul&gt;
+</code></pre>
+
+<pre class="css"><code>
+.navitem { margin-right: 30px; }
+.last-navitem { margin-right: 0; }
+</code></pre>
+
+<p>Or…</p>
+
+<pre class="css"><code>
+.navitem { margin-right: 30px; }
+.navitem.last-navitem { margin-right: 0; }
+</code></pre>
+
+<p>The Good:</p>
 
 <ul>
-  <li>The :not psuedo-class <code>+</code> any child selector. </li>
+  <li>This is the fastest way to render your code</li>
 </ul>
 
-<p>Here it is again:</p>
+<p>The Bad </p>
 
-<pre class="css"><code>.navitem:not(:last-of-type) { whatever-styles-you-want }</code></pre>
+<ul>
+  <li>You’ll either need to ensure that <code>.last-navitem</code> never gets moved before <code>.navitem</code> in the css or you’re going to need to get more specific:
+    <ul>
+      <li><code>.navitem.last-navitem</code>: (not good - we’re starting to run into specificity differences)</li>
+      <li><code>last-navitem { margin-right: 0!important; }</code>: Really? I hope you’re not using !important on any of your code</li>
+    </ul>
+  </li>
+  <li>Styles should be handled outside of the html (quoting this bit from <a href="http://www.reddit.com/user/birjolaxew">birjolaxew</a>)
+    <ul>
+      <li>html is a structural language</li>
+      <li>The last item is already structured as the last item, simply by being the last item</li>
+      <li>Adding a class to it is redundant and frankly ugly </li>
+    </ul>
+  </li>
+</ul>
 
-<p>Now I just need to go clean up my html! If you completely missed this selector combo like me, I hope this helps.</p>
+<h3 id="the-redundant-css-way">The redundant CSS way</h3>
 
-<p>Here’s the <a href="http://codepen.io/kaela/pen/EaOxwR">codepen</a>.</p>
+<pre class="html"><code>
+&lt;ul class="section-wrap"&gt;
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Home
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;About
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Thoughts
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Projects
+&lt;/ul&gt;
+</code></pre>
+
+<pre class="css"><code>
+.navitem { margin-right: 30px; }
+.navitem:last-of-type { margin-right: 0; }
+</code></pre>
+
+<p>The Good:</p>
+
+<ul>
+  <li>You’re not going to lose <em>that</em> much on performance compared to the first example</li>
+  <li>Keeps your styles outside of your html</li>
+</ul>
+
+<p>The Bad:</p>
+
+<ul>
+  <li>You define <code>.navitem</code>’s styles twice, which causes the browser to repaint (maybe don’t put this on a tag used 1000 times throughout the site)</li>
+</ul>
+
+<h3 id="the-shorthand">The shorthand</h3>
+
+<pre class="html"><code>
+&lt;ul class="section-wrap"&gt;
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Home
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;About
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Thoughts
+  &lt;li class= "navitem"&gt;&lt;a href="#"&gt;Projects
+&lt;/ul&gt;
+</code></pre>
+
+<pre class="css"><code>
+.navitem:not(:last-of-type) { margin-right: 30px; }
+</code></pre>
+
+<p>The Good:</p>
+
+<ul>
+  <li>One line of css and no html bloat!</li>
+</ul>
+
+<p>The Bad:</p>
+
+<ul>
+  <li>You define <code>.navitem</code>’s styles twice, which causes the browser to repaint (maybe don’t put this on a tag used 1000 times throughout the site) (see conclusion for more details on this one)</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>At the moment, I’m not sure if there is any difference in performance hit between the second example and this one. If you have any insight, “prey,” do tell!</p>
+
+<p>Here’s the <a href="http://codepen.io/kaela/pen/EaOxwR">codepen</a> for the shorthand.</p>
 
   </div>
 
