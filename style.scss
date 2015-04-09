@@ -186,9 +186,12 @@ blockquote {
 }
 
 .read-more {
+  @include transition(background, 0.3s, ease);
   background: $btn;
   color: $white;
+  display: inline-block;
   padding: 5px $pad;
+  margin-top: 15px;
   text-transform: uppercase;
   &:hover { background: $bg; }
 }
