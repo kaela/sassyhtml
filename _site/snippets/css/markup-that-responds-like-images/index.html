@@ -59,15 +59,16 @@
 
 <h3 id="grok-this">Grok this</h3>
 <ul>
-  <li>Padding is based on the parent container’s width (<a href="http://www.w3.org/TR/CSS2/box.html#margin-properties">official css box model specs</a>) </li>
+  <li>Padding and margin are based on the parent container’s width (<a href="http://www.w3.org/TR/CSS2/box.html#margin-properties">official css box model specs</a>) </li>
+  <li>This is true for <strong>all four sides</strong> of padding and margin (top, right, bottom, and left)</li>
 </ul>
 
 <p>When using pixels, this obviously isn’t an issue. However, this tutorial uses percentages, so you need to understand the css box model specs in order to understand why this technique works.</p>
 
 <h3 id="overview">Overview</h3>
 <ul>
-  <li>We will only use percentages to keep everything responsive</li>
-  <li>We set the height of our responsive elements to zero in order to avoid using px</li>
+  <li>Use only percentages to keep everything responsive</li>
+  <li>Set the height of our responsive elements to zero in order to avoid using px</li>
   <li>Aspect ratio = height / width</li>
 </ul>
 

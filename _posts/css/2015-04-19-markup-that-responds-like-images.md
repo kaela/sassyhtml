@@ -26,15 +26,16 @@ Adjust your browser's width and watch the following block of content respond ver
 </div>
 
 ### Grok this
-- Padding is based on the parent container's width ([official css box model specs](http://www.w3.org/TR/CSS2/box.html#margin-properties)) 
+- Padding and margin are based on the parent container's width ([official css box model specs](http://www.w3.org/TR/CSS2/box.html#margin-properties)) 
+- This is true for **all four sides** of padding and margin (top, right, bottom, and left)
 
 When using pixels, this obviously isn't an issue. However, this tutorial uses percentages, so you need to understand the css box model specs in order to understand why this technique works.
 
 
 
 ### Overview
-- We will only use percentages to keep everything responsive
-- We set the height of our responsive elements to zero in order to avoid using px
+- Use only percentages to keep everything responsive
+- Set the height of our responsive elements to zero in order to avoid using px
 - Aspect ratio = height / width
 
 
