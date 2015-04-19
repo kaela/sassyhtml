@@ -13,7 +13,7 @@ tags:
   - responsive design
 ---
 
-Adjust your browser's width and watch the following block of content respond.
+Adjust your browser's width and watch the following block of content respond vertically and horizontally.
 
 <div class="parent">
   <div class="left post-image respond">

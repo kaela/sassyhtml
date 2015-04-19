@@ -8,7 +8,7 @@
     
       <item>
         <title>Markup that Responds Like Images</title>
-        <description>&lt;p&gt;Adjust your browser’s width and watch the following block of content respond.&lt;/p&gt;
+        <description>&lt;p&gt;Adjust your browser’s width and watch the following block of content respond vertically and horizontally.&lt;/p&gt;
 
 &lt;div class=&quot;parent&quot;&gt;
   &lt;div class=&quot;left post-image respond&quot;&gt;
