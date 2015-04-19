@@ -22,8 +22,10 @@
 
 &lt;h3 id=&quot;grok-this&quot;&gt;Grok this&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Padding is based on the parent container’s width. When using pixels, this obviously isn’t an issue. However, this tutorial uses percentages. You need to understand this &lt;a href=&quot;http://www.w3.org/TR/CSS2/box.html#margin-properties&quot;&gt;css box model rule&lt;/a&gt; in order to understand why my tutorial works. &lt;/li&gt;
+  &lt;li&gt;Padding is based on the parent container’s width (&lt;a href=&quot;http://www.w3.org/TR/CSS2/box.html#margin-properties&quot;&gt;official css box model specs&lt;/a&gt;) &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;When using pixels, this obviously isn’t an issue. However, this tutorial uses percentages, so you need to understand the css box model specs in order to understand why this technique works.&lt;/p&gt;
 
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 &lt;ul&gt;
