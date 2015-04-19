@@ -38,23 +38,136 @@
     </section>
 
     <div id="main" role="main" class="container">
-      <article class="page">
-  
-  <h1>Workflow</h1>
+      <article class="post">
+  <h1>Markup that Responds Like Images</h1>
+  <div class="date">
+    Written on April 19, 2015
+  </div>
 
   <div class="entry">
-    <p>Back to <a href="/snippets">Snippets</a></p>
+    <div class="parent">
+  <div class="left post-image respond">
+    <img src="http://www.dumpaday.com/wp-content/uploads/2013/01/funny-cat-bath.jpg" />
+  </div>
+  <div class="right description respond">
+    <h1>What the heck</h1>
+    <p>I respond too?!</p>
+  </div>
+</div>
+
+<h3 id="grok-this">Grok this</h3>
 <ul>
-	
-	<li>
-		<a href="/snippets/workflow/creating-github-subtasks-in-issues">Creating GitHub Subtasks in Issues</a>
-	</li>
-	
+  <li>Padding is based on the parent container’s width. When using pixels, this obviously isn’t an issue. However, this tutorial uses percentages. You need to understand this <a href="http://www.w3.org/TR/CSS2/box.html#margin-properties">css box model rule</a> in order to understand why my tutorial works. </li>
 </ul>
 
-  </div>
-</article>
+<h3 id="overview">Overview</h3>
+<ul>
+  <li>We will only use percentages to keep everything responsive</li>
+  <li>We set the height of our responsive elements to zero in order to avoid using px</li>
+  <li>Aspect ratio = height / width</li>
+</ul>
 
+<h3 id="the-math">The math</h3>
+<p>I want my image to take up <strong>25%</strong> of the screen’s width. I want the content to take up 75% of the screen’s width. The original size of the image is <strong>620</strong> x <strong>822</strong>.</p>
+
+<ul>
+  <li>(image height / image width) * 100 * % element takes up in your grid</li>
+  <li>(822 / 620 ) * 0.25 = 0.33 </li>
+  <li>Both the image and content elements will use padding-bottom: 33%</li>
+</ul>
+
+<h3 id="still-with-me">Still with me?</h3>
+<p>If all of this makes sense to you, feel free to skip the rest. If it’s still a little iffy, keep reading for a further explanation. </p>
+
+<h3 id="example">Example</h3>
+
+<p data-height="470" data-theme-id="7680" data-slug-hash="MYNNBg" data-default-tab="css" data-user="kaela" class="codepen">See the Pen <a href="http://codepen.io/kaela/pen/MYNNBg/">MYNNBg</a> by Kaela (<a href="http://codepen.io/kaela">@kaela</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="height-of-zero">Height of Zero</h3>
+<p>Take a look at the height of the child elements, <code>.left</code> and <code>.right</code>. Using a height will mess up our responsive elements since height uses a static unit, like px. So we will set that to zero.</p>
+
+<h3 id="how-the-browser-calculates-padding">How the Browser Calculates Padding</h3>
+<p>In order to simplify things, let’s say our site is not responsive. This is what we have in our site: </p>
+
+<ul>
+  <li>One container div, <code>.parent</code>, which is 800px wide</li>
+  <li>Inside of <code>.parent</code>, there are two children, <code>.left</code> and <code>.right</code>. </li>
+  <li><code>.left</code> is 25% wide</li>
+  <li><code>.right</code> is 75% wide</li>
+  <li>Both children have a padding-bottom of 33%</li>
+</ul>
+
+<p>Let’s convert everything to px to see clearly how this all works:</p>
+
+<ul>
+  <li><code>.parent</code> (max-width) = 800px</li>
+  <li><code>.left</code> = 25% = 200px</li>
+  <li><code>.right</code> = 75% = 600px</li>
+</ul>
+
+<p>So what do you think the padding will be, in pixels?</p>
+
+<p>If you guessed 264px, you’re right! To calculate the padding, we use 800px * 0.33, which is 264px.</p>
+
+<p>Of course, our site is responsive and the width does change. And that is exactly why were are using percentages.</p>
+
+<h3 id="using-aspect-ratio">Using Aspect Ratio</h3>
+
+<p>If you are using this technique with an image, you will need to base your padding-bottom on the aspect ratio of that image. This ensures you’re not cropping out parts of the image or adding unnecessary spacing below it.</p>
+
+<p>The image above has an original height of 822px and a width of 620px. </p>
+
+<p>Aspect ratio = height/width = 822/620 = 1.32. But that number won’t work for us as-is, because our image isn’t taking up 100% of the screen’s width.</p>
+
+<p>Our image is inside of the <code>.left</code> div, which is taking up 25% of the screen’s width. So, we need to multiply our aspect ratio by 0.25: 1.32 * 0.25 = 0.33. </p>
+
+<p>33% is the number we need to use in order to keep our image looking spiffy at every browser size.</p>
+
+<p>We also need to that padding of 33% to the <code>.right</code> div. Remember earlier, when I showed you the <a href="http://www.w3.org/TR/CSS2/box.html#margin-properties">css box model specs</a>, and how padding is based on the parent element’s width? That means each child element needs the same padding-bottom to remain the same height. Feel free to play with my codepen above. It looks pretty funky when you don’t keep the padding the same.</p>
+
+<h3 id="another-use-case">Another use case</h3>
+<p>This could be used for missing images from the database. One way to implement this is to add some javascript and css love. If the image is there, show it. If not, apply a class. No need for an additional image.</p>
+
+<pre class="language-css"><code>.missingImage {
+  // only the following two styles are required
+  height: 0;
+  padding-bottom: 88%; //aspect radio in % * parent div’s width in %
+
+  //some optional styling below
+  border: $accent 5px solid;
+  position: relative;
+  &amp;:after {
+    color: $gray-med;
+    content: "Missing Image";
+    margin-top: -8px;
+    position: absolute; top: 50%;
+    text-align: center;
+    width: 100%;
+  }
+}
+</code></pre>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+    
+	    var disqus_shortname = 'sassyhtml'; 
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</article>
     </div>
 
     <div class="wrapper-footer">
