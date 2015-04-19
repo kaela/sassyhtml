@@ -13,6 +13,8 @@ tags:
   - responsive design
 ---
 
+Adjust your browser's width and watch the following block of content respond.
+
 <div class="parent">
   <div class="left post-image respond">
     <img src="http://www.dumpaday.com/wp-content/uploads/2013/01/funny-cat-bath.jpg">

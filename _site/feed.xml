@@ -8,7 +8,9 @@
     
       <item>
         <title>Markup that Responds Like Images</title>
-        <description>&lt;div class=&quot;parent&quot;&gt;
+        <description>&lt;p&gt;Adjust your browser’s width and watch the following block of content respond.&lt;/p&gt;
+
+&lt;div class=&quot;parent&quot;&gt;
   &lt;div class=&quot;left post-image respond&quot;&gt;
     &lt;img src=&quot;http://www.dumpaday.com/wp-content/uploads/2013/01/funny-cat-bath.jpg&quot; /&gt;
   &lt;/div&gt;
