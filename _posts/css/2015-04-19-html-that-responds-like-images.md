@@ -1,8 +1,8 @@
 ---
-title: Markup that Responds Like Images
+title: HTML that Responds Like Images
 author: kaela
 layout: post
-permalink: snippets/css/markup-that-responds-like-images/
+permalink: snippets/css/html-that-responds-like-images/
 categories:
   - css
 tags:
