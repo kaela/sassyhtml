@@ -94,7 +94,8 @@ Our image is inside of the `.left` div, which is taking up 25% of the screen’s
 We also need to that padding of 33% to the `.right` div. Remember earlier, when I showed you the [css box model specs](http://www.w3.org/TR/CSS2/box.html#margin-properties), and how padding is based on the parent element's width? That means each child element needs the same padding-bottom to remain the same height. Feel free to play with my codepen above. It looks pretty funky when you don’t keep the padding the same.
 
 ### Other Use Cases
-This could be used for missing images from the database. One way to implement this is to add some javascript and css love. If the image is there, show it. If not, apply a class. No need for an additional image.
+- This could be used for missing images from the database. If the image is there, show it. If not, apply a class. No need for an additional image.
+- Responsive embedded videos
 
-<p data-height="268" data-theme-id="7680" data-slug-hash="vOYOyd" data-default-tab="result" data-user="kaela" class='codepen'>See the Pen <a href='http://codepen.io/kaela/pen/vOYOyd/'>vOYOyd</a> by Kaela (<a href='http://codepen.io/kaela'>@kaela</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="700" data-theme-id="7680" data-slug-hash="vOYOyd" data-default-tab="result" data-user="kaela" class='codepen'>See the Pen <a href='http://codepen.io/kaela/pen/vOYOyd/'>vOYOyd</a> by Kaela (<a href='http://codepen.io/kaela'>@kaela</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
